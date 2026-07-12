@@ -1,0 +1,358 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('assets/fonts/open-sans-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('assets/fonts/poppins-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('assets/fonts/poppins-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --navy: #02667F;
+  --navy-dark: #014c5e;
+  --blue: #0090B7;
+  --ink: #121315;
+  --grey: #E6E6E6;
+  --grey-dark: #808080;
+  --white: #ffffff;
+  --error: #c0392b;
+  --ok: #1f8a4c;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 0 48px;
+}
+
+header.brand {
+  background: var(--ink);
+  padding: 28px 20px 24px;
+  text-align: center;
+}
+
+header.brand img {
+  height: 56px;
+  width: auto;
+}
+
+header.brand h1 {
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.3em;
+  color: var(--white);
+  margin: 14px 0 4px;
+  letter-spacing: 0.01em;
+}
+
+header.brand p {
+  color: var(--grey);
+  margin: 0;
+  font-size: 0.9em;
+}
+
+main {
+  padding: 24px 20px 0;
+}
+
+section {
+  margin-bottom: 28px;
+}
+
+h2 {
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--navy);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--grey);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9em;
+  margin: 14px 0 6px;
+  color: var(--ink);
+}
+
+label .required {
+  color: var(--error);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"] {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid var(--grey-dark);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1em;
+  color: var(--ink);
+  background: var(--white);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(2, 102, 127, 0.15);
+}
+
+input.invalid {
+  border-color: var(--error);
+}
+
+.hint {
+  font-size: 0.78em;
+  color: var(--grey-dark);
+  margin-top: 4px;
+}
+
+.error-text {
+  font-size: 0.8em;
+  color: var(--error);
+  margin-top: 4px;
+  display: none;
+}
+
+.error-text.show { display: block; }
+
+/* Waiver text block */
+.waiver-box {
+  border: 1.5px solid var(--grey);
+  border-radius: 8px;
+  padding: 16px;
+  max-height: 320px;
+  overflow-y: scroll;
+  background: #fafafa;
+  font-size: 0.88em;
+  line-height: 1.55;
+}
+
+.waiver-box p {
+  margin: 0 0 12px;
+}
+
+.waiver-box p strong { color: var(--navy); }
+
+.waiver-box .clause-num {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.scroll-progress {
+  height: 4px;
+  background: var(--grey);
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--navy);
+  transition: width 0.1s linear;
+}
+
+.scroll-status {
+  font-size: 0.78em;
+  color: var(--grey-dark);
+  margin-top: 6px;
+}
+
+.scroll-status.done { color: var(--ok); font-weight: 600; }
+
+/* Radio cards for age bracket */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1.5px solid var(--grey-dark);
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.radio-card input { margin-top: 3px; }
+
+.radio-card.selected {
+  border-color: var(--navy);
+  background: rgba(2, 102, 127, 0.06);
+}
+
+.radio-card .label-text {
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.radio-card .sub-text {
+  font-weight: 400;
+  font-size: 0.82em;
+  color: var(--grey-dark);
+  margin-top: 2px;
+}
+
+#guardian-fields {
+  display: none;
+  border-left: 3px solid var(--navy);
+  padding-left: 14px;
+  margin-top: 12px;
+}
+
+#guardian-fields.show { display: block; }
+
+/* Signature pad */
+.sig-wrap {
+  border: 1.5px solid var(--grey-dark);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  touch-action: none;
+}
+
+#sig-canvas {
+  display: block;
+  width: 100%;
+  height: 180px;
+  touch-action: none;
+}
+
+.sig-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.sig-controls .status {
+  font-size: 0.82em;
+  color: var(--grey-dark);
+}
+
+.sig-controls .status.done { color: var(--ok); font-weight: 600; }
+
+button.btn-clear {
+  background: none;
+  border: 1.5px solid var(--grey-dark);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 0.85em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.btn-submit {
+  width: 100%;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.05em;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+button.btn-submit:disabled {
+  background: var(--grey-dark);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.submit-note {
+  font-size: 0.78em;
+  color: var(--grey-dark);
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Result screens */
+.screen {
+  display: none;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.screen.show { display: block; }
+
+.screen .icon {
+  font-size: 3em;
+  margin-bottom: 12px;
+}
+
+.screen h2 {
+  border: none;
+  justify-content: center;
+  color: var(--ink);
+}
+
+.screen p {
+  color: var(--grey-dark);
+  max-width: 420px;
+  margin: 0 auto 20px;
+}
+
+.screen a.mailto-btn {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+#form-wrap.hide { display: none; }
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.4);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: -3px;
+  margin-right: 8px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

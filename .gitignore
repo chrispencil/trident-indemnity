@@ -1,0 +1,12 @@
+.DS_Store
+*.log
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
+
+# print deliverables kept private (in vault), not on public repo
+print/
