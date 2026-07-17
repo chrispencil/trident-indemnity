@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const sigPad = createSignaturePad(sigCanvas);
 
   const submitBtn = $('submit-btn');
+  const submitGate = $('submit-gate');
+  const submitHint = $('submit-hint');
   const formWrap = $('form-wrap');
   const screenSuccess = $('screen-success');
   const screenError = $('screen-error');
@@ -112,8 +114,35 @@ document.addEventListener('DOMContentLoaded', () => {
       !sigPad.isEmpty();
 
     submitBtn.disabled = !ok;
+    if (ok) hideSubmitHint();
     return ok;
   }
+
+  // Tell the user *why* the (disabled) submit button won't respond. A disabled
+  // button swallows its own clicks, so pointer-events is off on it (see CSS) and
+  // the click lands on this wrapper instead.
+  function hideSubmitHint() {
+    submitHint.hidden = true;
+  }
+
+  function showSubmitReason() {
+    if (!waiverRead) {
+      submitHint.textContent = 'Please scroll to the end of the waiver above and read it in full before submitting.';
+      submitHint.hidden = false;
+      waiverBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      scrollStatus.classList.remove('flash');
+      // reflow so the animation restarts even if it was recently played
+      void scrollStatus.offsetWidth;
+      scrollStatus.classList.add('flash');
+    } else {
+      submitHint.textContent = 'Please complete all required fields and add your signature before submitting.';
+      submitHint.hidden = false;
+    }
+  }
+
+  submitGate.addEventListener('click', () => {
+    if (submitBtn.disabled) showSubmitReason();
+  });
 
   [studentName, guardianName, signedBy, place, date, idNumber, dob, email, cell, nextOfKin, nextOfKinCell]
     .forEach((el) => el.addEventListener('input', validate));

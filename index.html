@@ -124,7 +124,10 @@
           <input type="tel" id="next-of-kin-cell" required>
         </section>
 
-        <button type="submit" class="btn-submit" id="submit-btn" disabled>Submit Signed Form</button>
+        <div class="submit-gate" id="submit-gate">
+          <button type="submit" class="btn-submit" id="submit-btn" disabled>Submit Signed Form</button>
+        </div>
+        <p class="submit-hint" id="submit-hint" role="alert" hidden></p>
         <p class="submit-note">Sent straight to Trident Fight Centre. No app or account needed.</p>
       </form>
     </div>
